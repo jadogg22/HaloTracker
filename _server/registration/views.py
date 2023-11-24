@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.http import JsonResponse
+from .models import UserProfile
 
 # Create your views here.
 def sign_up(req):
@@ -11,10 +12,13 @@ def sign_up(req):
             password=req.POST.get("password"),
             email=req.POST.get("email"),
             first_name=req.POST.get("first_name"),
-            last_name=req.POST.get("last_name")
+            last_name=req.POST.get("last_name"),
         )
+        user_profile = UserProfile(user=user, haloUsername=req.POST.get("haloUsername"))
+        user_profile.save()
         login(req, user)
-        return redirect("/")
+        context = {"user": user_profile}
+        return redirect("/", context)
     else:
         return render(req, "registration/sign_up.html")
 

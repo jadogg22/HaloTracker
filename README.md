@@ -23,7 +23,7 @@ as this is Really just the start of the project we have a set of fetures that we
 
 ## Technical Challenges
 
-publicly available API for Halo Infinite player and game statistics, so we are planning on using a custom web scraper tool built in Python to acces player and game data from stat websites such as halotracker.com. This will be the most complicated part of the project and will be the biggest hurdle to overcomeould be able to bookmark specific players for quick access to their stats.
+these is no apublicly available API for Halo Infinite player and game statistics, so we are planning on using a custom web scraper tool built in Python to acces player and game data from stat websites such as halotracker.com. This will be the most complicated part of the project and will be the biggest hurdle to overcomeould be able to bookmark specific players for quick access to their stats.
 Group Members
 - Brandon Herrin (A02336477)
 - Jaden Anderson (A02210459).
