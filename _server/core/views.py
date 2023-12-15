@@ -64,8 +64,11 @@ def get_stats_by_username(req, username):
     else:
         print("couldn't find ya")
         scrapStats = webScraper.getStats(username)
+        if scrapStats == False:
+            return JsonResponse({"notFound": True})
         stats = GameStats.create_from_dict(scrapStats)
         stats.save()
+        stats.notFound = False
         stats = stats.to_dict()
         print(stats)
 

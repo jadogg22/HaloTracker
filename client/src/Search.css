@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('./assets/HaloRing.png') center/cover no-repeat fixed;
+    overflow: hidden;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-bottom: 100px;
+  }
+  
+.search-wrapper {
+    display: flex;
+}
+  
+.search-bar {
+    padding: 15px;
+    width: 800px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    margin-right: -1px;
+}
+  
+.search-button {
+    padding: 15px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: 1px solid #007BFF;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
