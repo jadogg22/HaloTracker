@@ -14,7 +14,11 @@ def sign_up(req):
             first_name=req.POST.get("first_name"),
             last_name=req.POST.get("last_name"),
         )
-        user_profile = UserProfile(user=user, haloUsername=req.POST.get("haloUsername"))
+        if "haloName" not in req.POST:
+            print("Halo Username is required")
+            return JsonResponse({"error": "Halo Username is required"})
+            
+        user_profile = UserProfile(user=user, haloUsername=req.POST.get("haloName"))
         user_profile.save()
         login(req, user)
         context = {"user": user_profile}
@@ -35,4 +39,4 @@ def sign_in(req):
 
 def logout_view(request):
     logout(request)
-    return JsonResponse({"success": True })
+    return redirect(request, "registration/sign_in.html")

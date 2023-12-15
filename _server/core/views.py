@@ -5,6 +5,7 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from registration.models import UserProfile
+from . import webScraper
 
 # Load manifest when server launches
 MANIFEST = {}
@@ -43,6 +44,25 @@ def get_user_by_username(req, username):
 
     print(user_info)
     return JsonResponse(user_info)
+
+def get_stats(req):
+    print("calling function")
+    stats = webScraper.getStats("jadogg22")
+    return JsonResponse(stats)
+
+def get_stats_by_username(req, username):
+    print("calling function")
+    stats = webScraper.getStats(username)
+    return JsonResponse(stats)
+
+    #We want to store our own data in a database,
+    #so the proper thing to do would be to 
+
+    
+    #check database for username
+    #if username exists, and the last scrape was less then 3 hours return stats
+    #else scrape the data and return stats
+
 
 def get_user_debug(req):
      info = {
