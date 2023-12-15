@@ -5,7 +5,9 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from registration.models import UserProfile
+from core.models import GameStats
 from . import webScraper
+import sqlite3
 
 # Load manifest when server launches
 MANIFEST = {}
@@ -25,6 +27,7 @@ def index(req):
     }
 
     return render(req, "core/index.html", context)
+
 
 def get_user(req):
     if req.user.is_authenticated:
@@ -51,9 +54,23 @@ def get_stats(req):
     return JsonResponse(stats)
 
 def get_stats_by_username(req, username):
-    print("calling function")
-    stats = webScraper.getStats(username)
+    
+    #search database for recent stats
+    stats = GameStats.get_stats_by_username(username)
+
+    if stats:
+        print("Newest Gamestat:")
+        print(stats)
+    else:
+        print("couldn't find ya")
+        scrapStats = webScraper.getStats(username)
+        stats = GameStats.create_from_dict(scrapStats)
+        stats.save()
+        stats = stats.to_dict()
+        print(stats)
+
     return JsonResponse(stats)
+
 
     #We want to store our own data in a database,
     #so the proper thing to do would be to 
