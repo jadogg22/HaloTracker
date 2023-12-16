@@ -1,5 +1,7 @@
 from django.db import models
 from django.forms.models import model_to_dict
+from django.utils import timezone
+from datetime import datetime
 
 
 # Create your models here.
@@ -48,10 +50,20 @@ class GameStats(models.Model):
         # filter by gamertag and return the first one.
         stats = GameStats.objects.filter(gamertag=username).order_by('-timeScraped').first()
 
-        if stats is not None:
-            return stats.to_dict()
-        else:
-            return None
+        return stats
+        
+    def isRecent(self):
+        # The oldest data to retrieve in the database
+        timeDelay = timezone.timedelta(hours=3)
+
+        #convert to datetime
+
+        now = timezone.now()
+        isOldEnough = now - timeDelay
+
+        return isOldEnough <= self.timeScraped <= now
+
+
 
     def __str__(self):
         return self.gamertag

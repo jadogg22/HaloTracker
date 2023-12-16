@@ -53,6 +53,17 @@ def get_stats(req):
     stats = webScraper.getStats("jadogg22")
     return JsonResponse(stats)
 
+def scrapeData(username):
+    scrapStats = webScraper.getStats(username)
+    if scrapStats == False:
+        return JsonResponse({"notFound": True})
+    stats = GameStats.create_from_dict(scrapStats)
+    stats.save()
+    stats.notFound = False
+    stats = stats.to_dict()
+
+    return stats
+
 def get_stats_by_username(req, username):
     
     #search database for recent stats
@@ -60,19 +71,19 @@ def get_stats_by_username(req, username):
 
     if stats:
         print("Newest Gamestat:")
-        print(stats)
+        if stats.isRecent():
+            stats = stats.to_dict()
+            return JsonResponse(stats) 
+        else: 
+            # not new enough
+            stats = scrapeData(username)
+            return JsonResponse(stats)
+
+
     else:
         print("couldn't find ya")
-        scrapStats = webScraper.getStats(username)
-        if scrapStats == False:
-            return JsonResponse({"notFound": True})
-        stats = GameStats.create_from_dict(scrapStats)
-        stats.save()
-        stats.notFound = False
-        stats = stats.to_dict()
-        print(stats)
-
-    return JsonResponse(stats)
+        stats = scrapeData(username)
+        return JsonResponse(stats)
 
 
     #We want to store our own data in a database,

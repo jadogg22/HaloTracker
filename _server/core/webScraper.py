@@ -45,9 +45,6 @@ def getStats(gamertag):
         except:
             print("nothing to remove")
 
-        if i < 300:
-            print(f"id {i}: {data[i]}")
-
     stats = {}
 
     stats['gamertag'] = gamertag[0]
