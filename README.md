@@ -32,14 +32,14 @@ The largest technical challenge we foresee is accessing player and game data. Th
 - User Accounts: Users should be able to create accounts to log in.
     - The user should be able to delete their account.
     - The user should be able to link an Xbox Live username to their account for quick access to their stats.
-- Player Statistic: Users should be able to search up players’ stats based on their Xbox Live username.
+- Player Statistic: Users should be able to search for players’ stats based on their Xbox Live username.
     - If the given Xbox Live username is invalid or inaccessible, an error message should be displayed.
 - Bookmarks
     - Users should be able to bookmark specific players for quick access to their stats.
 
 ## Running the Application
 **First Time Setup**:
-1. In the root directory, install the python dependencies with the command `poetry install`
+1. In the root directory, install the Python dependencies with the command `poetry install`
 2. In the `client` directory, install the javascript dependencies with the command `npm install`
 3. In the `_server` directory, create a new file called `.env`
 4. Copy the contents of `_server/.env.example` into the newly created `.env` file.
