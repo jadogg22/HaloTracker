@@ -40,7 +40,7 @@ The largest technical challenge we foresee is accessing player and game data. Th
 ## Running the Application
 **First Time Setup**:
 1. In the root directory, install the Python dependencies with the command `poetry install`
-2. In the `client` directory, install the javascript dependencies with the command `npm install`
+2. In the `client` directory, install the JavaScript dependencies with the command `npm install`
 3. In the `_server` directory, create a new file called `.env`
 4. Copy the contents of `_server/.env.example` into the newly created `.env` file.
 5. Activate the poetry environment with the command `poetry shell`
