@@ -90,6 +90,3 @@ def getStats(gamertag):
 
 
     return stats
-
-print(getStats("jadogg22"))
-

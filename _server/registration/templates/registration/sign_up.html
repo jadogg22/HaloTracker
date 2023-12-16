@@ -1,39 +1,42 @@
 {% extends "registration/base.html"%}
 
 {% block content %}
-<form action="/registration/sign_up/" method="post">
-  {% csrf_token %}
-  <div>
-    <label>
-      First Name
-      <input type="text" name="first_name">
-    </label>
-  </div>
-  <div>
-    <label>
-      Last Name
-      <input type="text" name="last_name">
-    </label>
-  </div>
-  <div>
-    <label>
-      Halo Username
-      <input type="text" name="haloName">
-    </label>
-  </div>
-  <div>
-    <label>
-      Email
-      <input type="email" name="email">
-    </label>
-  </div>
-  <div>
-    <label>
-      Password
-      <input type="password" name="password">
-    </label>
-  </div>
-  
-  <button>Create Account</button>
-</form>
+<div class="container">
+  <h1>Create Halo Player Tracker Account</h1>
+  <form action="/registration/sign_up/" method="post">
+    {% csrf_token %}
+    <div class="input-field">
+      <label>
+        First Name:
+        <input type="text" name="first_name">
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        Last Name:
+        <input type="text" name="last_name">
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        Halo Username:
+        <input type="text" name="haloName">
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        Email:
+        <input type="email" name="email">
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        Password:
+        <input type="password" name="password">
+      </label>
+    </div>
+    
+    <button class="input-field">Create Account</button>
+  </form>
+</div>
 {% endblock %}

@@ -16,7 +16,6 @@ const Profile = () => {
                 const user_data = await res.json();
                 const res2 = await fetch(`userData/${user_data.haloUsername}`);
                 const data = await res2.json();
-                console.log(data);
                 setPlayerData(data);
                 setLoading(false);
             } catch (error) {

@@ -16,8 +16,6 @@ const Account = () => {
             try {
                 const res = await fetch(`getUserData`);
                 const user_data = await res.json();
-
-                console.log(user_data);
                 setUserData(user_data);
                 setLoading(false);
             } catch (error) {
@@ -28,6 +26,12 @@ const Account = () => {
         fetchData();
     }, [username]);
 
+    async function deleteAccount() {
+        const res = await fetch("registration/delete_account/");
+
+        window.location = "registration/sign_in/";
+    }
+
     return (
         <div>
             {loading ? <Loading /> : ( userData.user === 'None' ? <div className='container'><div className="player-card">Account no Found. Please make sure you are logged in.</div></div> :
@@ -37,10 +41,12 @@ const Account = () => {
                         <div className="details">Name: {userData.first_name} {userData.last_name}</div>
                         <div className="details">Email: {userData.email}</div>
                         <div className="details">Linked Halo Username: {userData.haloUsername}</div>
+                        <button onClick={deleteAccount}>Delete Account</button>
                     </div>
                 </div>
                 )
             }
+            <button onClick={deleteAccount}>Delete Account</button>
         </div>
     )
 };

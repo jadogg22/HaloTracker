@@ -40,3 +40,8 @@ def sign_in(req):
 def logout_view(request):
     logout(request)
     return redirect(request, "registration/sign_in.html")
+
+def delete_account(req):
+    user = User.objects.get(id=req.user.id)
+    user.delete()
+    return redirect("registration/sign_in.html")

@@ -1,22 +1,25 @@
 {% extends "registration/base.html"%}
 
 {% block content %}
-<form action="/registration/sign_in/" method="post">
-  {% csrf_token %}
-  <div>
-    <label>
-      Email
-      <input type="email" name="email">
-    </label>
-  </div>
-  <div>
-    <label>
-      Password
-      <input type="password" name="password">
-    </label>
-  </div>
-  <button>Sign In</button>
-
-</form>
-<a href="/registration/sign_up/">Create New Account</a>
+<div class="container">
+  <h1>Halo Player Tracker Login</h1>
+  <form action="/registration/sign_in/" method="post">
+    {% csrf_token %}
+    <div class="input-field">
+      <label>
+        Email:
+        <input type="email" name="email">
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        Password:
+        <input type="password" name="password">
+      </label>
+    </div>
+    <button class="input-field">Sign In</button>
+  </form>
+  <br>
+  <a href="/registration/sign_up/">Create New Account</a>
+</div>
 {% endblock %}
